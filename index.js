@@ -97,9 +97,16 @@ client.on('interactionCreate', async interaction => {
       })
       .setTimestamp();
 
-    await interaction.reply({
+    const canal = client.channels.cache.get('1506138099103826050');
+
+      await canal.send({
       embeds: [embed]
-    });
+      });
+
+      await interaction.reply({
+      content: '✅ Condo enviado correctamente.',
+      ephemeral: true
+      });
 
   }
 });
