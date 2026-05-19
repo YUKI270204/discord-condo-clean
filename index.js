@@ -24,6 +24,17 @@ const client = new Client({
   intents: [GatewayIntentBits.Guilds]
 });
 
+// IDs DE ROLES PERMITIDOS
+const allowedRoles = [
+  '111111111111111111', // Owner
+  '222222222222222222', // Admin
+  '333333333333333333', // Mod
+  '444444444444444444'  // Game Uploader
+];
+
+// ID DEL CANAL DONDE SE ENVIARÁ EL CONDO
+const CHANNEL_ID = '1506138099103826050';
+
 const commands = [
   new SlashCommandBuilder()
     .setName('condo')
@@ -74,6 +85,20 @@ client.on('interactionCreate', async interaction => {
 
   if (interaction.commandName === 'condo') {
 
+    // VERIFICAR ROLES
+    const memberRoles = interaction.member.roles.cache;
+
+    const tienePermiso = allowedRoles.some(roleId =>
+      memberRoles.has(roleId)
+    );
+
+    if (!tienePermiso) {
+      return interaction.reply({
+        content: '❌ No tienes permiso para usar este comando.',
+        ephemeral: true
+      });
+    }
+
     const enlace = interaction.options.getString('enlace');
     const grupo = interaction.options.getString('grupo');
     const key = interaction.options.getString('key');
@@ -108,16 +133,24 @@ client.on('interactionCreate', async interaction => {
       })
       .setTimestamp();
 
-    const canal = client.channels.cache.get('1506138099103826050');
+    // ENVIAR AL CANAL
+    const canal = client.channels.cache.get(CHANNEL_ID);
 
-      await canal.send({
-      embeds: [embed]
+    if (!canal) {
+      return interaction.reply({
+        content: '❌ No se encontró el canal.',
+        ephemeral: true
       });
+    }
 
-      await interaction.reply({
+    await canal.send({
+      embeds: [embed]
+    });
+
+    await interaction.reply({
       content: '✅ Condo enviado correctamente.',
       ephemeral: true
-      });
+    });
 
   }
 });
