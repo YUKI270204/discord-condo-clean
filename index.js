@@ -26,10 +26,10 @@ const client = new Client({
 
 // IDs DE ROLES PERMITIDOS
 const allowedRoles = [
-  '111111111111111111', // Owner
-  '222222222222222222', // Admin
-  '333333333333333333', // Mod
-  '444444444444444444'  // Game Uploader
+  '1495157672150962288', // Owner
+  '1495163689299611709', // Admin
+  '1495902970607304714', // Mod
+  '1495900836193108028'  // Game Uploader
 ];
 
 // ID DEL CANAL DONDE SE ENVIARÁ EL CONDO
