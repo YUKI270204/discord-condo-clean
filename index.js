@@ -95,7 +95,7 @@ client.on('interactionCreate', async interaction => {
     if (!tienePermiso) {
       return interaction.reply({
         content: '❌ No tienes permiso para usar este comando.',
-        ephemeral: true
+        flags: 64
       });
     }
 
@@ -149,7 +149,7 @@ client.on('interactionCreate', async interaction => {
 
     await interaction.reply({
       content: '✅ Condo enviado correctamente.',
-      ephemeral: true
+      flags: 64
     });
 
   }
