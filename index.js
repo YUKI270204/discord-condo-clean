@@ -42,7 +42,7 @@ const keysDatabase = {
   'MEG_V4': 'https://www.roblox.com/es/communities/2613928/ROLVe#!/about',
   'MEG_GOAT': 'https://www.roblox.com/es/communities/2613928/ROLVe#!/about',
   'MEG_Other': 'https://www.roblox.com/es/communities/2613928/ROLVe#!/about',
-
+  'ShtONTOP': 'NO TIENE GRUPO',
   'Tamales26': 'https://www.roblox.com/es/communities/4705120/Scriptbloxian-Studios#!/about'
 };
 
