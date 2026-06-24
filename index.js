@@ -227,6 +227,11 @@ client.on('interactionCreate', async interaction => {
 
 });
 
-client.login(process.env.TOKEN);
+client.login(process.env.TOKEN)
+  .then(() => console.log('Login enviado correctamente.'))
+  .catch(error => {
+    console.error('ERROR AL INICIAR SESIÓN:');
+    console.error(error);
+  });
 
 console.log('Bot ejecutándose...');
